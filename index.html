@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coffee Shop Menu</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>Coffee Delight</h1>
+        <p>Your daily dose of caffeine</p>
+        <div class="user-options">
+            <button id="loginButton" onclick="redirectToLogin()">Login</button>
+            <div id="profileSection" style="display:none;">
+                <span id="profileName">Welcome, User!</span>
+                <button onclick="openProfileModal()">Profile</button>
+                <button onclick="openAccountSettingsModal()">Account Settings</button>
+            </div>
+        </div>
+    </header>
+    <main>
+        <section class="menu">
+            <div class="menu-item" id="item1">
+                <img src="images/espresso.jpg" alt="Espresso">
+                <h2>Espresso</h2>
+                <p>Strong and bold espresso shot.</p>
+                <button onclick="customizeOrder('Espresso')">Customize</button>
+            </div>
+            <div class="menu-item" id="item2">
+                <img src="images/cappuccino.jpg" alt="Cappuccino">
+                <h2>Cappuccino</h2>
+                <p>Rich espresso with steamed milk and a layer of foam.</p>
+                <button onclick="customizeOrder('Cappuccino')">Customize</button>
+            </div>
+            <div class="menu-item" id="item3">
+                <img src="images/latte.jpg" alt="Latte">
+                <h2>Latte</h2>
+                <p>Smooth espresso with steamed milk.</p>
+                <button onclick="customizeOrder('Latte')">Customize</button>
+            </div>
+        </section>
+    </main>
+
+    <div id="orderModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle"></h2>
+            <form id="orderForm">
+                <label for="size">Size:</label>
+                <select id="size" name="size">
+                    <option value="small">Small</option>
+                    <option value="medium">Medium</option>
+                    <option value="large">Large</option>
+                </select>
+                <label for="extras">Extras:</label>
+                <div class="extras">
+                    <input type="checkbox" id="extraShot" name="extras" value="extraShot"> <label for="extraShot">Extra Shot</label>
+                    <input type="checkbox" id="whippedCream" name="extras" value="whippedCream"> <label for="whippedCream">Whipped Cream</label>
+                    <input type="checkbox" id="soyMilk" name="extras" value="soyMilk"> <label for="soyMilk">Soy Milk</label>
+                </div>
+                <br><br>
+                <button type="button" onclick="submitOrder()">Submit Order</button>
+            </form>
+        </div>
+    </div>
+
+    <div id="profileModal" class="modal right">
+        <div class="modal-content">
+            <span class="close" onclick="closeProfileModal()">&times;</span>
+            <h2>Profile</h2>
+            <div id="profileDetails">
+                <p>Username: <span id="profileUsername"></span></p>
+                <p>Email: <span id="profileEmail"></span></p>
+            </div>
+            <button type="button" onclick="openAccountSettingsModal()">Account Settings</button>
+        </div>
+    </div>
+
+    <div id="accountSettingsModal" class="modal right">
+        <div class="modal-content">
+            <span class="close" onclick="closeAccountSettingsModal()">&times;</span>
+            <h2>Account Settings</h2>
+            <form id="accountSettingsForm">
+                <label for="newUsername">New Username:</label>
+                <input type="text" id="newUsername" name="newUsername">
+                <label for="newEmail">New Email:</label>
+                <input type="email" id="newEmail" name="newEmail">
+                <label for="newPassword">New Password:</label>
+                <input type="password" id="newPassword" name="newPassword">
+                <br><br>
+                <button type="button" onclick="submitAccountSettings()">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
